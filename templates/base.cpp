@@ -22,6 +22,9 @@ using pi = pair<int,int>;
 #define rep(a) F0R(_, a)
 #define each(a, x) for (auto& a: x)
 
+#define YES cout << "YES" << "\n";
+#define NO cout << "NO" << "\n";
+
 const int dr[4] = {1, 0, -1, 0}, dc[4] = {0, 1, 0, -1};
 
 const int MOD = 1e9+7;

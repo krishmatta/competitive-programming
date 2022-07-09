@@ -30,6 +30,13 @@ const int dr[4] = {1, 0, -1, 0}, dc[4] = {0, 1, 0, -1};
 const int MOD = 1e9+7;
 const int INF = 1e9;
 
+void vin(int n, vi& a) {
+  rep(n) {
+    int ai; cin >> ai;
+    a.pb(ai);
+  }
+}
+
 void setIO(string name = "") {
 	cin.tie(0)->sync_with_stdio(0);
   if (sz(name)) {

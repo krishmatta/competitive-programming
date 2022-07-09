@@ -25,6 +25,8 @@ using pi = pair<int,int>;
 #define YES cout << "YES" << "\n";
 #define NO cout << "NO" << "\n";
 
+#define tst int t; cin >> t; while(t--)
+
 const int dr[4] = {1, 0, -1, 0}, dc[4] = {0, 1, 0, -1};
 
 const int MOD = 1e9+7;

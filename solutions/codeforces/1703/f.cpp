@@ -87,17 +87,12 @@ int main() {
 
     ll ret = 0;
     segtree st(n + 1);
-    each(x, nums) {
-//      cout << x.f << " " << x.s << "  ";
-    }
-//    cout << "\n";
     ll run = 0;
     F0R(i, sz(nums)) {
       if(!i && nums[i].f != nums[i - 1].f) {
         run = 0;
       }
       int curr = st.get(0, nums[i].f);
-//      cout << "i: " << i << " curr: " << curr << "\n";
       ret += st.get(0, nums[i].f);
       st.set(nums[i].s, 1);
       if(!i && nums[i].f == nums[i - 1].f) {

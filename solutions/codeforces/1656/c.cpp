@@ -52,13 +52,12 @@ int main() {
 
   tst {
     int n; cin >> n;
-    vi a; vin(n, a); // 2 and 1 cannot coexist. 1 and 0 cannot coexist.
+    vi a; vin(n, a);
     set<int> nums;
     each(i, a) {
       nums.insert(i);
     }
 
-    // if 1 is present, we have to reduce everything to 1; else, we reduce everything to 0
     bool ret = true;
     if(nums.find(1) != nums.end()) {
       each(i, a) {

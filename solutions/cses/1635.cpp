@@ -1,72 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 using ll = long long;
-using db = long double;
-using str = string;
-
-using vi = vector<int>;
-#define pb push_back
-#define all(x) begin(x), end(x)
-#define sz(x) (int)(x).size()
-
-using pi = pair<int,int>;
-#define f first
-#define s second
-#define mp make_pair
-
-#define FOR(i, a, b) for (int i = (a); i < (b); ++i)
-#define F0R(i, a) FOR(i, 0, a)
-#define ROF(i, a, b) for (int i = (b) - 1; i >= (a); --i)
-#define R0F(i, a) ROF(i, 0, a)
-#define rep(a) F0R(_, a)
-#define each(a, x) for (auto& a: x)
-
-#define YES cout << "YES" << "\n";
-#define NO cout << "NO" << "\n";
-
-#define tst int t; cin >> t; while(t--)
-
-const int dr[4] = {1, 0, -1, 0}, dc[4] = {0, 1, 0, -1};
 
 const int MOD = 1e9+7;
 const int INF = 1e9;
 
-void vin(int n, vi& a) {
-  rep(n) {
-    int ai; cin >> ai;
-    a.pb(ai);
-  }
-}
-
-void setIO(string name = "") {
-	cin.tie(0)->sync_with_stdio(0);
-  if (sz(name)) {
-		freopen((name+".in").c_str(), "r", stdin);
-		freopen((name+".out").c_str(), "w", stdout);
-	}
-}
+#define all(x) x.begin(), x.end()
+#define sz(x) (int)(x).size()
 
 int main() {
-  setIO();
+    ios::sync_with_stdio(0);
+    cin.tie(0);
 
-  int n, x; cin >> n >> x;
-  vi c;
-  rep(n) {
-    int ci; cin >> ci;
-    c.pb(ci);
-  }
+    int n, x; cin >> n >> x;
+    vector<int> c;
+    for(int i = 0; i < n; i++) {
+      int ci; cin >> ci;
+      c.push_back(ci);
+    }
 
-  vi dp(1, 1);
-  FOR(i, 1, x + 1) {
-    int curr = 0;
-    each(ci, c) {
-      if(ci <= i) {
-        curr += dp[i - ci];
-        curr %= MOD;
+    vector<int> dp(x + 1, 0);
+    dp[0] = 1;
+    for(int i = 1; i <= x; i++) {
+      for(int j = 0; j < n; j++) {
+	if(i >= c[j]) {
+	  dp[i] += dp[i - c[j]];
+	  dp[i] %= MOD;
+	}
       }
     }
-    dp.pb(curr);
-  }
-  cout << dp[x];
+
+    cout << dp[x];
 }

@@ -10,7 +10,7 @@ using vi = vector<int>;
 #define all(x) begin(x), end(x)
 #define sz(x) (int)(x).size()
 
-using pi = pair<int,int>;
+using pi = pair<int, int>;
 #define f first
 #define s second
 #define mp make_pair
@@ -20,78 +20,84 @@ using pi = pair<int,int>;
 #define ROF(i, a, b) for (int i = (b) - 1; i >= (a); --i)
 #define R0F(i, a) ROF(i, 0, a)
 #define rep(a) F0R(_, a)
-#define each(a, x) for (auto& a: x)
+#define each(a, x) for (auto& a : x)
 
 #define YES cout << "YES" << "\n";
 #define NO cout << "NO" << "\n";
 
-#define tst int t; cin >> t; while(t--)
+#define tst \
+  int t;    \
+  cin >> t; \
+  while (t--)
 
 const int dr[4] = {1, 0, -1, 0}, dc[4] = {0, 1, 0, -1};
 
-const int MOD = 1e9+7;
+const int MOD = 1e9 + 7;
 const int INF = 1e9;
 
 void vin(int n, vi& a) {
   rep(n) {
-    int ai; cin >> ai;
+    int ai;
+    cin >> ai;
     a.pb(ai);
   }
 }
 
 void setIO(string name = "") {
-	cin.tie(0)->sync_with_stdio(0);
+  cin.tie(0)->sync_with_stdio(0);
   if (sz(name)) {
-		freopen((name+".in").c_str(), "r", stdin);
-		freopen((name+".out").c_str(), "w", stdout);
-	}
+    freopen((name + ".in").c_str(), "r", stdin);
+    freopen((name + ".out").c_str(), "w", stdout);
+  }
 }
 
 int main() {
   setIO();
 
   tst {
-    int n, m; cin >> n >> m;
+    int n, m;
+    cin >> n >> m;
     vector<pi> lr;
     rep(m) {
-      int l, r; cin >> l >> r;
+      int l, r;
+      cin >> l >> r;
       lr.pb(mp(l, r));
     }
 
-    int q; cin >> q;
-    vi x; vin(q, x);
+    int q;
+    cin >> q;
+    vi x;
+    vin(q, x);
 
-    int lo = 0; int hi = q;
+    int lo = 0;
+    int hi = q;
     bool found_good = false;
-    while(lo < hi) {
+    while (lo < hi) {
       int mid = lo + (hi - lo + 1) / 2;
 
-      vi a; rep(n + 1) a.pb(0);
-      F0R(i, mid) {
-        a[x[i]] = 1;
-      }
+      vi a;
+      rep(n + 1) a.pb(0);
+      F0R(i, mid) { a[x[i]] = 1; }
 
-      FOR(i, 1, sz(a)) {
-        a[i] += a[i - 1];
-      }
+      FOR(i, 1, sz(a)) { a[i] += a[i - 1]; }
 
       bool good = false;
       F0R(i, m) {
         int count = a[lr[i].s] - a[lr[i].f - 1];
-	int len = lr[i].s - lr[i].f + 1;
-	if(count > len - count) {
+        int len = lr[i].s - lr[i].f + 1;
+        if (count > len - count) {
           good = true;
-	  break;
-	}
+          break;
+        }
       }
-      if(!good) {
+      if (!good) {
         lo = mid;
       } else {
         hi = mid - 1;
       }
       found_good = found_good || good;
     }
-    if(found_good) {
+    if (found_good) {
       cout << lo + 1;
     } else {
       cout << -1;

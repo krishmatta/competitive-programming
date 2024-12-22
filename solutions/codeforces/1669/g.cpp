@@ -10,7 +10,7 @@ using vi = vector<int>;
 #define all(x) begin(x), end(x)
 #define sz(x) (int)(x).size()
 
-using pi = pair<int,int>;
+using pi = pair<int, int>;
 #define f first
 #define s second
 #define mp make_pair
@@ -20,41 +20,47 @@ using pi = pair<int,int>;
 #define ROF(i, a, b) for (int i = (b) - 1; i >= (a); --i)
 #define R0F(i, a) ROF(i, 0, a)
 #define rep(a) F0R(_, a)
-#define each(a, x) for (auto& a: x)
+#define each(a, x) for (auto& a : x)
 
 #define YES cout << "YES" << "\n";
 #define NO cout << "NO" << "\n";
 
-#define tst int t; cin >> t; while(t--)
+#define tst \
+  int t;    \
+  cin >> t; \
+  while (t--)
 
 const int dr[4] = {1, 0, -1, 0}, dc[4] = {0, 1, 0, -1};
 
-const int MOD = 1e9+7;
+const int MOD = 1e9 + 7;
 const int INF = 1e9;
 
 void vin(int n, vi& a) {
   rep(n) {
-    int ai; cin >> ai;
+    int ai;
+    cin >> ai;
     a.pb(ai);
   }
 }
 
 void setIO(string name = "") {
-	cin.tie(0)->sync_with_stdio(0);
+  cin.tie(0)->sync_with_stdio(0);
   if (sz(name)) {
-		freopen((name+".in").c_str(), "r", stdin);
-		freopen((name+".out").c_str(), "w", stdout);
-	}
+    freopen((name + ".in").c_str(), "r", stdin);
+    freopen((name + ".out").c_str(), "w", stdout);
+  }
 }
 
 int main() {
   setIO();
 
   tst {
-    int n, m; cin >> n >> m;
+    int n, m;
+    cin >> n >> m;
     char grid[n][m];
     F0R(i, n) {
-      str s; cin >> s;
+      str s;
+      cin >> s;
       F0R(j, m) {
         char c = s[j];
         grid[i][j] = c;
@@ -63,10 +69,10 @@ int main() {
 
     R0F(i, n) {
       F0R(j, m) {
-        if(grid[i][j] == '*') {
+        if (grid[i][j] == '*') {
           int next = i;
           FOR(k, i + 1, n) {
-            if(grid[k][j] == '.') {
+            if (grid[k][j] == '.') {
               next = k;
             } else {
               break;
@@ -80,9 +86,7 @@ int main() {
     }
 
     F0R(i, n) {
-      F0R(j, m) {
-        cout << grid[i][j];
-      }
+      F0R(j, m) { cout << grid[i][j]; }
       cout << "\n";
     }
     cout << "\n";

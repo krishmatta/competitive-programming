@@ -10,7 +10,7 @@ using vi = vector<int>;
 #define all(x) begin(x), end(x)
 #define sz(x) (int)(x).size()
 
-using pi = pair<int,int>;
+using pi = pair<int, int>;
 #define f first
 #define s second
 #define mp make_pair
@@ -20,38 +20,44 @@ using pi = pair<int,int>;
 #define ROF(i, a, b) for (int i = (b) - 1; i >= (a); --i)
 #define R0F(i, a) ROF(i, 0, a)
 #define rep(a) F0R(_, a)
-#define each(a, x) for (auto& a: x)
+#define each(a, x) for (auto& a : x)
 
 #define YES cout << "YES" << "\n";
 #define NO cout << "NO" << "\n";
 
-#define tst int t; cin >> t; while(t--)
+#define tst \
+  int t;    \
+  cin >> t; \
+  while (t--)
 
 const int dr[4] = {1, 0, -1, 0}, dc[4] = {0, 1, 0, -1};
 
-const int MOD = 1e9+7;
+const int MOD = 1e9 + 7;
 const int INF = 1e9;
 
 void vin(int n, vi& a) {
   rep(n) {
-    int ai; cin >> ai;
+    int ai;
+    cin >> ai;
     a.pb(ai);
   }
 }
 
 void setIO(string name = "") {
-	cin.tie(0)->sync_with_stdio(0);
+  cin.tie(0)->sync_with_stdio(0);
   if (sz(name)) {
-		freopen((name+".in").c_str(), "r", stdin);
-		freopen((name+".out").c_str(), "w", stdout);
-	}
+    freopen((name + ".in").c_str(), "r", stdin);
+    freopen((name + ".out").c_str(), "w", stdout);
+  }
 }
 
 void solve() {
-  int n; cin >> n;
+  int n;
+  cin >> n;
   vector<vi> r;
   rep(n) {
-    vi ri; vin(5, ri);
+    vi ri;
+    vin(5, ri);
     r.pb(ri);
   }
 
@@ -60,12 +66,12 @@ void solve() {
   FOR(i, 1, n) {
     int curr = 0;
     F0R(j, 5) {
-      if(r[i][j] < sol[j]) {
+      if (r[i][j] < sol[j]) {
         curr++;
       }
     }
 
-    if(curr >= 3) {
+    if (curr >= 3) {
       obj = i;
       sol = r[i];
     }
@@ -75,17 +81,17 @@ void solve() {
   F0R(i, n) {
     int curr = 0;
     F0R(j, 5) {
-      if(r[i][j] < sol[j]) {
+      if (r[i][j] < sol[j]) {
         curr++;
       }
     }
 
-    if(curr >= 3) {
+    if (curr >= 3) {
       good = false;
     }
   }
 
-  if(good) {
+  if (good) {
     cout << obj + 1;
   } else {
     cout << -1;
@@ -96,7 +102,5 @@ void solve() {
 int main() {
   setIO();
 
-  tst {
-    solve();
-  }
+  tst { solve(); }
 }

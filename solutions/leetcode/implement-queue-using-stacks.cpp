@@ -7,7 +7,7 @@ using vi = vector<int>;
 #define all(x) begin(x), end(x)
 #define sz(x) (int)(x).size()
 
-using pi = pair<int,int>;
+using pi = pair<int, int>;
 #define f first
 #define s second
 #define mp make_pair
@@ -17,29 +17,28 @@ using pi = pair<int,int>;
 #define ROF(i, a, b) for (int i = (b) - 1; i >= (a); --i)
 #define R0F(i, a) ROF(i, 0, a)
 #define rep(a) F0R(_, a)
-#define each(a, x) for (auto& a: x)
+#define each(a, x) for (auto &a : x)
 
 const int dr[4] = {1, 0, -1, 0}, dc[4] = {0, 1, 0, -1};
 
-const int MOD = 1e9+7;
+const int MOD = 1e9 + 7;
 const int INF = 1e9;
 
 void setIO(string name = "") {
-	cin.tie(0)->sync_with_stdio(0);
+  cin.tie(0)->sync_with_stdio(0);
   if (sz(name)) {
-		freopen((name+".in").c_str(), "r", stdin);
-		freopen((name+".out").c_str(), "w", stdout);
-	}
+    freopen((name + ".in").c_str(), "r", stdin);
+    freopen((name + ".out").c_str(), "w", stdout);
+  }
 }
 
-
 class MyQueue {
-public:
+ public:
   deque<int> s1;
   deque<int> s2;
 
   MyQueue() {}
-    
+
   void push(int x) {
     mv(s1, s2);
     s2.pb(x);
@@ -51,17 +50,13 @@ public:
     s1.pop_back();
     return ret;
   }
-    
-  int peek() {
-    return s1.back();
-  }
-    
-  bool empty() {
-    return !sz(s1);
-  }
+
+  int peek() { return s1.back(); }
+
+  bool empty() { return !sz(s1); }
 
   void mv(deque<int> &f, deque<int> &s) {
-    while(sz(f)) {
+    while (sz(f)) {
       s.pb(f.back());
       f.pop_back();
     }

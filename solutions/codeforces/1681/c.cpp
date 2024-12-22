@@ -10,7 +10,7 @@ using vi = vector<int>;
 #define all(x) begin(x), end(x)
 #define sz(x) (int)(x).size()
 
-using pi = pair<int,int>;
+using pi = pair<int, int>;
 #define f first
 #define s second
 #define mp make_pair
@@ -20,36 +20,40 @@ using pi = pair<int,int>;
 #define ROF(i, a, b) for (int i = (b) - 1; i >= (a); --i)
 #define R0F(i, a) ROF(i, 0, a)
 #define rep(a) F0R(_, a)
-#define each(a, x) for (auto& a: x)
+#define each(a, x) for (auto& a : x)
 
 #define YES cout << "YES" << "\n";
 #define NO cout << "NO" << "\n";
 
-#define tst int t; cin >> t; while(t--)
+#define tst \
+  int t;    \
+  cin >> t; \
+  while (t--)
 
 const int dr[4] = {1, 0, -1, 0}, dc[4] = {0, 1, 0, -1};
 
-const int MOD = 1e9+7;
+const int MOD = 1e9 + 7;
 const int INF = 1e9;
 
 void vin(int n, vi& a) {
   rep(n) {
-    int ai; cin >> ai;
+    int ai;
+    cin >> ai;
     a.pb(ai);
   }
 }
 
 void setIO(string name = "") {
-	cin.tie(0)->sync_with_stdio(0);
+  cin.tie(0)->sync_with_stdio(0);
   if (sz(name)) {
-		freopen((name+".in").c_str(), "r", stdin);
-		freopen((name+".out").c_str(), "w", stdout);
-	}
+    freopen((name + ".in").c_str(), "r", stdin);
+    freopen((name + ".out").c_str(), "w", stdout);
+  }
 }
 
 bool sorted(vi& a) {
   F0R(i, sz(a) - 1) {
-    if(a[i] > a[i + 1]) {
+    if (a[i] > a[i + 1]) {
       return false;
     }
   }
@@ -57,14 +61,17 @@ bool sorted(vi& a) {
 }
 
 void solve() {
-  int n; cin >> n;
-  vi a; vin(n, a);
-  vi b; vin(n, b);
+  int n;
+  cin >> n;
+  vi a;
+  vin(n, a);
+  vi b;
+  vin(n, b);
   vector<pi> mv;
 
-  while(!sorted(a)) {
+  while (!sorted(a)) {
     F0R(i, sz(a) - 1) {
-      if(a[i] > a[i + 1]) {
+      if (a[i] > a[i + 1]) {
         mv.pb(mp(i, i + 1));
         a[i] ^= a[i + 1];
         a[i + 1] ^= a[i];
@@ -77,9 +84,9 @@ void solve() {
     }
   }
 
-  while(!sorted(b)) {
+  while (!sorted(b)) {
     F0R(i, sz(a) - 1) {
-      if(b[i] > b[i + 1]) {
+      if (b[i] > b[i + 1]) {
         mv.pb(mp(i, i + 1));
         a[i] ^= a[i + 1];
         a[i + 1] ^= a[i];
@@ -92,11 +99,9 @@ void solve() {
     }
   }
 
-  if(sorted(a) && sorted(b)) {
+  if (sorted(a) && sorted(b)) {
     cout << sz(mv) << "\n";
-    each(i, mv) {
-      cout << i.f + 1 << " " << i.s + 1 << "\n";
-    }
+    each(i, mv) { cout << i.f + 1 << " " << i.s + 1 << "\n"; }
   } else {
     cout << -1 << "\n";
   }
@@ -106,7 +111,5 @@ void solve() {
 int main() {
   setIO();
 
-  tst {
-    solve();
-  }
+  tst { solve(); }
 }
